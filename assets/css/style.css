@@ -19,7 +19,7 @@ h1 {
     position: relative;
     border-style: dashed;
     border-width: 3px;
-    border-color: tomato;
+    border-color: goldenrod;
     border-radius: 4%;
     margin-bottom: 10px;
     padding-bottom: 30px;
@@ -39,10 +39,10 @@ h1 {
     margin: 20px auto;
     width: 800px;
     padding: 30px 20px;
-    background: rgba(255, 230, 148, 0.80);
+    background: rgba(255, 230, 148, 0.60);
     border-width: 3px;
     border-style: dashed;
-    border-color: tomato;
+    border-color: goldenrod;
     border-radius: 4%;
     overflow: auto;
 }
@@ -57,36 +57,46 @@ h1 {
     position: relative;
     width: 1150px;
     margin: 15px auto;
-    background: rgba(255, 230, 148, 0.80);
+    background: rgba(255, 230, 148, 0.6);
     border-width: 3px;
     border-style: dashed;
     padding: 20px 0;
-    border-color: tomato;
+    border-color: goldenrod;
     border-radius: 4%;
+}
+
+#chickenCrystals:hover {
+    background: rgb(255, 230, 148);
+    border-color: red;
 }
 
 .chickenButton {
     margin: 0 5px;
-    border-style: dotted;
-    border-width: 4px;
-    border-color: tomato;
-    border-radius: 8%;
 }
 
 #chickenContainer1, #chickenContainer2, #chickenContainer3, #chickenContainer4 {
     display: inline-block;
+    border-style: dotted;
+    border-width: 4px;
+    border-color: orange;
+    border-radius: 8%;
 }
 
 #chickenContainer1:hover, #chickenContainer2:hover, #chickenContainer3:hover, #chickenContainer4:hover {
-    opacity: 0.7;
+    opacity: 0.6;
     color: orangered;
+    border-style: dashed;
+    border-color: red;
+    
 }
 
 #chickenContainer1:active, #chickenContainer2:active, #chickenContainer3:active, #chickenContainer4:active {
     position: relative;
     top: 2px;
-    left: 2px;
+    left: 3px;
     opacity: 1;
+    border-style: solid;
+    border-color: red;
 }
 
 #chickenInstructions {
