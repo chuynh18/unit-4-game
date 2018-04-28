@@ -20,6 +20,7 @@ h1 {
     border-style: dashed;
     border-width: 3px;
     border-color: tomato;
+    border-radius: 4%;
     margin-bottom: 10px;
     padding-bottom: 30px;
     background: rgba(255, 230, 148, 0.80);
@@ -42,6 +43,7 @@ h1 {
     border-width: 3px;
     border-style: dashed;
     border-color: tomato;
+    border-radius: 4%;
     overflow: auto;
 }
 
@@ -60,6 +62,7 @@ h1 {
     border-style: dashed;
     padding: 20px 0;
     border-color: tomato;
+    border-radius: 4%;
 }
 
 .chickenButton {
@@ -67,6 +70,7 @@ h1 {
     border-style: dotted;
     border-width: 4px;
     border-color: tomato;
+    border-radius: 8%;
 }
 
 #chickenContainer1, #chickenContainer2, #chickenContainer3, #chickenContainer4 {
@@ -76,6 +80,13 @@ h1 {
 #chickenContainer1:hover, #chickenContainer2:hover, #chickenContainer3:hover, #chickenContainer4:hover {
     opacity: 0.7;
     color: orangered;
+}
+
+#chickenContainer1:active, #chickenContainer2:active, #chickenContainer3:active, #chickenContainer4:active {
+    position: relative;
+    top: 2px;
+    left: 2px;
+    opacity: 1;
 }
 
 #chickenInstructions {
