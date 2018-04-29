@@ -1,5 +1,10 @@
 "use strict";
 
+// this is the jQuery document ready thing (in shorthand form!), I think
+$(function() {
+
+// ---------------------------------------------------------------------------
+// this first section is generally where I hold my variables
 // this holds the values for the crystals
 var crystalArray;
 
@@ -20,7 +25,12 @@ var cheerYouOn = ["Aren't you just winging it?", "Keep going!  Don't chicken out
 
 // I'm sorry
 var clucker = ["assets/sounds/cluck01.webm", "assets/sounds/cluck02.webm", "assets/sounds/cluck03.webm", "assets/sounds/cluck04.webm", "assets/sounds/cluck05.webm", "assets/sounds/cluck06.webm", "assets/sounds/cluck07.webm", "assets/sounds/cluck08.webm", "assets/sounds/cluck09.webm", "assets/sounds/cluck10.webm", "assets/sounds/cluck11.webm", "assets/sounds/cluck12.webm", "assets/sounds/cluck13.webm"]
+// creating the audioElement variable to simplify later code
 var audioElement = document.createElement("audio");
+
+// ---------------------------------------------------------------------------
+// and this is generally where I hold my functions
+// return a randomly selected string from the clucker array, which contains URLs pointing to the cluck sounds
 var randomAudio = function() {
     return clucker[Math.floor(Math.random() * clucker.length)];
 };
@@ -123,6 +133,7 @@ var spawnChickens = function() {
 
 // changes the value of the chickens - used for new games
 // I gave up on doing it more elegantly, RIP
+// but I learned a little more about the functionality that jQuery provides...  WORTH!?
 var changeChickens = function () {
     $("#chickenSpawn img:nth-child(1)").attr("value", crystalArray[0]);
     $("#chickenSpawn img:nth-child(2)").attr("value", crystalArray[1]);
@@ -137,6 +148,7 @@ var winMsg = function() {
     $("#chickenScoreboard").css("background-color", "rgba(170, 255, 170, 0.70)");
     $(".betweenChickens").css("background-color", "#aaffaa");
     $("#chickenCrystals").css("background-color", "rgba(170, 255, 170, 0.70)");
+    // this part is the loop that makes the blinking appear to "travel"
     for (var i = 0; i < 7; i++) {
         setTimeout(function() {
             $("#chickenHeader").css("background-color", "rgba(255, 230, 148, 0.70)");
@@ -157,6 +169,7 @@ var winMsg = function() {
             $("#chickenCrystals").css("background-color", "rgba(170, 255, 170, 0.70)");
         }, 500*i+500);
     }
+    // this part makes the page look as it was when the game started
     setTimeout(function() {
         $("#chickenInstructions").text("Click these chickens!");
         $(".betweenChickens").css("background-color", "#ffe694");
@@ -168,13 +181,16 @@ var winMsg = function() {
 
 var loseMsg = function() {
     $("#chickenInstructions").text("Looks like you've clucked one too many times!  Better cluck next time!");
+    // blink blink blink blink
     for (var i = 0; i < 4; i++) {
+        // blink to green...
         setTimeout(function() {
             $("#chickenHeader").css("background-color", "rgba(255, 170, 170, 0.70)");
             $("#chickenScoreboard").css("background-color", "rgba(255, 170, 170, 0.70)");
             $(".betweenChickens").css("background-color", "#ffaaaa");
             $("#chickenCrystals").css("background-color", "rgba(255, 170, 170, 0.70)");
         }, 1000*i);
+        // ...and blink back to yellow
         setTimeout(function() {
             $(".betweenChickens").css("background-color", "#ffe694");
             $("#chickenCrystals").css("background-color", "rgba(255, 230, 148, 0.70)");
@@ -187,31 +203,42 @@ var loseMsg = function() {
     }, 4000);
 };
 
+// ---------------------------------------------------------------------------
+
 // ------ begin game logic -------
 
-// this is the jQuery document ready thing (in shorthand form!), I think
-$(function() {
-// invoke newGame() on page load - only for the first round played per page load
+    // invoke newGame() on page load - only for the first round played per page load
     newGame();
     updateDisplay();
+    // create the chicken buttons
     spawnChickens();
 
     // this makes each chicken button increment chicken power by the appropriate amount when clicked
     $(".chickenButton").on("click", function() {
-        // console.log("clicked chicken value is " + $(this).attr("value"));
+        // console.log("clicked chicken value is " + $(this).attr("value")); // this was something I used for debugging
+        // set the attribute of audioElement to a random cluck sound
         audioElement.setAttribute("src", randomAudio());
+        // CLUCK
         audioElement.play();
+        // increment chickenValue by the value of the clucked button
         chickenValue += parseInt($(this).attr("value"))
+        // update the scoreboard so the player can see
         updateDisplay();
+        // change the text to a randomly selected pun
         $("#chickenInstructions").text(cheerYouOn[Math.floor(Math.random()*cheerYouOn.length)]);
         // win
         if (chickenValue === targetNum) {
+            // cock-a-doodle-doooooooooooo
             audioElement.setAttribute("src", "assets/sounds/win.webm");
+            // okay technically this line is the one that goes cock-a-doodle-doooooooooooo
             audioElement.play();
+            // you're winner!
             winLoss[0]++;
+            //new game stuff
             newGame();
             updateDisplay();
             changeChickens();
+            // display win pun and blink obnoxiously
             winMsg();
         }
         // lose
@@ -220,6 +247,7 @@ $(function() {
             newGame();
             updateDisplay();
             changeChickens();
+            // display lose pun and blink (a little less) obnoxiously
             loseMsg();
         }
     });
