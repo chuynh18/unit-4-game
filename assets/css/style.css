@@ -175,10 +175,12 @@ h1 {
     h1 {
         font-size: 24pt;
         text-shadow: 1px 1px #ff0000;
+        position: relative;
+        top: -20px;
     }
 
     #chickenHeader {
-        height: 60px;
+        height: 25px;
         }
 
     .pointingChicken {
@@ -204,7 +206,7 @@ h1 {
 
 @media only screen and (max-width: 400px) {
     #chickenHeader {
-        height: 30px;
+        height: 10px;
     }
     h1 {
         font-size: 18pt;
