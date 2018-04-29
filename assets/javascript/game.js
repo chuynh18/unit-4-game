@@ -27,7 +27,7 @@ var genTargetNum = function() {
     return Math.floor(Math.random() * 102) + 19;
 };
 
-// sanity tests for genCrystalNum() and genTargetNum().  also wrote them to get practice with objects
+// sanity tests for genCrystalNum() and genTargetNum().  mainly wrote them to get practice with objects
 var testGen = {
     i: 1
     ,
@@ -107,16 +107,46 @@ var spawnChickens = function() {
         chickenBtn.attr("alt", "Chicken picture " + (i+1));
         chickenBtn.attr("value", crystalArray[i]);
         $("#chickenSpawn").append(chickenBtn);
-        console.log(chickenBtn);
+        // console.log(chickenBtn);
     };
 };
 
-// changes the value of the chickens
+// changes the value of the chickens - used for new games
 var changeChickens = function () {
     $("#chickenSpawn img:nth-child(1)").attr("value", crystalArray[0]);
     $("#chickenSpawn img:nth-child(2)").attr("value", crystalArray[1]);
     $("#chickenSpawn img:nth-child(3)").attr("value", crystalArray[2]);
     $("#chickenSpawn img:nth-child(4)").attr("value", crystalArray[3]);
+};
+
+var winMsg = function() {
+    $("#chickenInstructions").text("You won!")
+    $(".betweenChickens").css("background-color", "#aaffaa");
+    $("#chickenCrystals").css("background-color", "rgba(170, 255, 170, 0.70)");
+    $("#chickenHeader").css("background-color", "rgba(170, 255, 170, 0.70)");
+    $("#chickenScoreboard").css("background-color", "rgba(170, 255, 170, 0.70)");
+    setTimeout(function() {
+        $("#chickenInstructions").text("Click these chickens!")
+        $(".betweenChickens").css("background-color", "#ffe694");
+        $("#chickenCrystals").css("background-color", "rgba(255, 230, 148, 0.70)");
+        $("#chickenHeader").css("background-color", "rgba(255, 230, 148, 0.70)");
+        $("#chickenScoreboard").css("background-color", "rgba(255, 230, 148, 0.70)");
+    }, 4000);
+};
+
+var loseMsg = function() {
+    $("#chickenInstructions").text("You lost.")
+    $(".betweenChickens").css("background-color", "#ffaaaa");
+    $("#chickenCrystals").css("background-color", "rgba(255, 170, 170, 0.70)");
+    $("#chickenHeader").css("background-color", "rgba(255, 170, 170, 0.70)");
+    $("#chickenScoreboard").css("background-color", "rgba(255, 170, 170, 0.70)");
+    setTimeout(function() {
+        $("#chickenInstructions").text("Click these chickens!")
+        $(".betweenChickens").css("background-color", "#ffe694");
+        $("#chickenCrystals").css("background-color", "rgba(255, 230, 148, 0.70)");
+        $("#chickenHeader").css("background-color", "rgba(255, 230, 148, 0.70)");
+        $("#chickenScoreboard").css("background-color", "rgba(255, 230, 148, 0.70)");
+    }, 4000);
 };
 
 // ------ begin game logic -------
@@ -130,20 +160,24 @@ spawnChickens();
 
 // this makes each chicken button increment chicken power by the appropriate amount when clicked
 $(".chickenButton").on("click", function() {
-    console.log("clicked chicken value is " + $(this).attr("value"));
+    // console.log("clicked chicken value is " + $(this).attr("value"));
     chickenValue += parseInt($(this).attr("value"))
     updateDisplay();
+    // win
     if (chickenValue === targetNum) {
         winLoss[0]++;
         newGame();
         updateDisplay();
         changeChickens();
+        winMsg();
     }
+    // lose
     else if (chickenValue >= targetNum) {
         winLoss[1]++;
         newGame();
         updateDisplay();
         changeChickens();
+        loseMsg();
     }
 });
 

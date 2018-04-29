@@ -23,7 +23,7 @@ h1 {
     border-radius: 4%;
     margin-bottom: 10px;
     padding-bottom: 30px;
-    background: rgba(255, 230, 148, 0.80);
+    background: rgba(255, 230, 148, 0.70);
 }
 
 #chickenLeft {
@@ -39,7 +39,7 @@ h1 {
     margin: 20px auto;
     width: 800px;
     padding: 30px 20px;
-    background: rgba(255, 230, 148, 0.60);
+    background: rgba(255, 230, 148, 0.70);
     border-width: 3px;
     border-style: dashed;
     border-color: goldenrod;
@@ -55,12 +55,13 @@ h1 {
 
 .betweenChickens {
     float: left;
+    width: 310px;
+    background-color: #ffe694;
 }
 
 .regularText {
     font-size: 18pt;
     text-shadow: 1px 1px #ff0000;
-    background-color: rgb(255, 230, 148);
     padding: 0 15px;
     border-style: double;
     border-radius: 5%;
@@ -69,9 +70,9 @@ h1 {
 
 #chickenCrystals {
     position: relative;
-    width: 1150px;
+    width: 1130px;
     margin: 15px auto;
-    background: rgba(255, 230, 148, 0.6);
+    background: rgba(255, 230, 148, 0.70);
     border-width: 3px;
     border-style: dashed;
     padding: 20px 0;
@@ -80,8 +81,8 @@ h1 {
 }
 
 #chickenCrystals:hover {
-    background: rgb(255, 230, 148);
     border-color: red;
+    border-style: solid;
 }
 
 .chickenButton {
