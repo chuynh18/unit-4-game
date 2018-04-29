@@ -17,6 +17,14 @@ var crystalURL = ["assets/images/ckn1.jpg", "assets/images/ckn2.jpg", "assets/im
 
 // this holds "motivational" messages
 var cheerYouOn = ["Aren't you just winging it?", "Keep going!  Don't chicken out!", "Don't stop pecking these buttons!", "I'm just egging you on!", "Talk is cheep, so keep on clucking!", "One more cluck!  Don't be a chicken!", "Don't be stingy!  Spare me one more poultry click!"]
+
+// I'm sorry
+var clucker = ["assets/sounds/cluck01.webm", "assets/sounds/cluck02.webm", "assets/sounds/cluck03.webm", "assets/sounds/cluck04.webm", "assets/sounds/cluck05.webm", "assets/sounds/cluck06.webm", "assets/sounds/cluck07.webm", "assets/sounds/cluck08.webm", "assets/sounds/cluck09.webm", "assets/sounds/cluck10.webm", "assets/sounds/cluck11.webm", "assets/sounds/cluck12.webm", "assets/sounds/cluck13.webm"]
+var audioElement = document.createElement("audio");
+var randomAudio = function() {
+    return clucker[Math.floor(Math.random() * clucker.length)];
+};
+
 /* this generates a random number between TWO and twelve (not starting at one, because one is lame)
  NOTE:  No need to call this function; the thing you want to do is handled by assignCrystalValues() */
 var genCrystalNum = function() {
@@ -184,32 +192,34 @@ var loseMsg = function() {
 // this is the jQuery document ready thing (in shorthand form!), I think
 $(function() {
 // invoke newGame() on page load - only for the first round played per page load
-newGame();
-updateDisplay();
-spawnChickens();
-
-// this makes each chicken button increment chicken power by the appropriate amount when clicked
-$(".chickenButton").on("click", function() {
-    // console.log("clicked chicken value is " + $(this).attr("value"));
-    chickenValue += parseInt($(this).attr("value"))
+    newGame();
     updateDisplay();
-    $("#chickenInstructions").text(cheerYouOn[Math.floor(Math.random()*cheerYouOn.length)]);
-    // win
-    if (chickenValue === targetNum) {
-        winLoss[0]++;
-        newGame();
+    spawnChickens();
+
+    // this makes each chicken button increment chicken power by the appropriate amount when clicked
+    $(".chickenButton").on("click", function() {
+        // console.log("clicked chicken value is " + $(this).attr("value"));
+        audioElement.setAttribute("src", randomAudio());
+        audioElement.play();
+        chickenValue += parseInt($(this).attr("value"))
         updateDisplay();
-        changeChickens();
-        winMsg();
-    }
-    // lose
-    else if (chickenValue >= targetNum) {
-        winLoss[1]++;
-        newGame();
-        updateDisplay();
-        changeChickens();
-        loseMsg();
-    }
-});
+        $("#chickenInstructions").text(cheerYouOn[Math.floor(Math.random()*cheerYouOn.length)]);
+        // win
+        if (chickenValue === targetNum) {
+            winLoss[0]++;
+            newGame();
+            updateDisplay();
+            changeChickens();
+            winMsg();
+        }
+        // lose
+        else if (chickenValue >= targetNum) {
+            winLoss[1]++;
+            newGame();
+            updateDisplay();
+            changeChickens();
+            loseMsg();
+        }
+    });
 
 });
