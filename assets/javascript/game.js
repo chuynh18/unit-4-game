@@ -16,7 +16,7 @@ var winLoss = [0, 0];
 var crystalURL = ["assets/images/ckn1.jpg", "assets/images/ckn2.jpg", "assets/images/ckn3.jpg", "assets/images/ckn4.jpg"]
 
 // this holds "motivational" messages
-var cheerYouOn = ["Aren't you just winging it?", "Keep going!  Don't chicken out!", "Don't stop pecking these buttons!", "I'm just egging you on!", "Talk is cheep, so keep on clucking!", "One more cluck!  Don't be a chicken!", "Don't be stingy!  Spare me one more poultry click!"]
+var cheerYouOn = ["Aren't you just winging it?", "Keep going!  Don't chicken out!", "Don't stop pecking these buttons!", "I'm just egging you on!", "Talk is cheep, so keep on clucking!", "One more cluck!  Don't be a chicken!", "Don't be stingy!  Spare me one more poultry click!", "Today's your c-lucky day!", "Peck in order, and you just might win!", "Achieve beak performance and you just might win!"]
 
 // I'm sorry
 var clucker = ["assets/sounds/cluck01.webm", "assets/sounds/cluck02.webm", "assets/sounds/cluck03.webm", "assets/sounds/cluck04.webm", "assets/sounds/cluck05.webm", "assets/sounds/cluck06.webm", "assets/sounds/cluck07.webm", "assets/sounds/cluck08.webm", "assets/sounds/cluck09.webm", "assets/sounds/cluck10.webm", "assets/sounds/cluck11.webm", "assets/sounds/cluck12.webm", "assets/sounds/cluck13.webm"]
