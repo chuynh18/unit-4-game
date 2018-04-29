@@ -132,6 +132,7 @@ h1 {
 @media only screen and (max-width: 856px) {
     #chickenScoreboard {
         width: 92%;
+        margin: 5px auto;
     }
 
     .pointingChicken {
@@ -153,6 +154,7 @@ h1 {
     }
     #chickenCrystals {
         height: 30%;
+        margin: 5px auto;
     }
 }
 
