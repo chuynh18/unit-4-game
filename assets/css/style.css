@@ -119,3 +119,87 @@ h1 {
     font-size: 24pt;
     text-shadow: 2px 1px #ff0000;
 }
+
+@media only screen and (max-width: 1156px) {
+    #chickenCrystals {
+        width: 95%;
+    }
+    .chickenButton {
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width: 856px) {
+    #chickenScoreboard {
+        width: 92%;
+    }
+
+    .pointingChicken {
+        width: 28%;
+    }
+
+    .betweenChickens {
+        width: 33%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #chickenHeader {
+    width: 70%;
+    }
+
+    .regularText {
+        font-size: 14pt;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    h1 {
+        font-size: 28pt;
+        text-shadow: 1px 1px #ff0000;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    h1 {
+        font-size: 24pt;
+        text-shadow: 1px 1px #ff0000;
+    }
+
+    #chickenHeader {
+        height: 60px;
+        }
+
+    .pointingChicken {
+        visibility: hidden;
+    }
+
+    .betweenChickens {
+        width: 90%;
+        position: relative;
+        top: -120px;
+    }
+
+    #chickenScoreboard {
+        width: 88%;
+        height: 160px;
+        overflow: hidden;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #chickenHeader {
+        height: 30px;
+    }
+    h1 {
+        font-size: 18pt;
+        text-shadow: 1px 1px #ff0000;
+    }
+
+    .betweenChickens {
+        top: -80px;
+    }
+    .chickenButton {
+        width: 40%;
+    }
+}
