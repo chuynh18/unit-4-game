@@ -167,7 +167,7 @@ var winMsg = function() {
 };
 
 var loseMsg = function() {
-    $("#chickenInstructions").text("Looks like you've clucked one too many times!");
+    $("#chickenInstructions").text("Looks like you've clucked one too many times!  Better cluck next time!");
     for (var i = 0; i < 4; i++) {
         setTimeout(function() {
             $("#chickenHeader").css("background-color", "rgba(255, 170, 170, 0.70)");
