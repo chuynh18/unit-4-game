@@ -114,6 +114,7 @@ var spawnChickens = function() {
 };
 
 // changes the value of the chickens - used for new games
+// I gave up on doing it more elegantly, RIP
 var changeChickens = function () {
     $("#chickenSpawn img:nth-child(1)").attr("value", crystalArray[0]);
     $("#chickenSpawn img:nth-child(2)").attr("value", crystalArray[1]);
@@ -121,49 +122,33 @@ var changeChickens = function () {
     $("#chickenSpawn img:nth-child(4)").attr("value", crystalArray[3]);
 };
 
-// yes, I could simplify this with a loop but I got tired
+// making this was a waste of my time
 var winMsg = function() {
     $("#chickenInstructions").text("You won!  But don't get cocky!");
     $("#chickenHeader").css("background-color", "rgba(170, 255, 170, 0.70)");
     $("#chickenScoreboard").css("background-color", "rgba(170, 255, 170, 0.70)");
     $(".betweenChickens").css("background-color", "#aaffaa");
     $("#chickenCrystals").css("background-color", "rgba(170, 255, 170, 0.70)");
-    setTimeout(function() {
-        $("#chickenHeader").css("background-color", "rgba(255, 230, 148, 0.70)");
-    }, 100);
-    setTimeout(function() {
-        $("#chickenHeader").css("background-color", "rgba(170, 255, 170, 0.70)");
-        $("#chickenScoreboard").css("background-color", "rgba(255, 230, 148, 0.70)");
-    }, 200);
-    setTimeout(function() {
-        $("#chickenScoreboard").css("background-color", "rgba(170, 255, 170, 0.70)");
-        $(".betweenChickens").css("background-color", "#ffe694");
-    }, 300);
-    setTimeout(function() {
-        $(".betweenChickens").css("background-color", "#aaffaa");
-        $("#chickenCrystals").css("background-color", "rgba(255, 230, 148, 0.70)");
-    }, 400);
-    setTimeout(function() {
-        $("#chickenCrystals").css("background-color", "rgba(170, 255, 170, 0.70)");
-    }, 500);
-    setTimeout(function() {
-        $("#chickenHeader").css("background-color", "rgba(255, 230, 148, 0.70)");
-    }, 600);
-    setTimeout(function() {
-        $("#chickenHeader").css("background-color", "rgba(170, 255, 170, 0.70)");
-        $("#chickenScoreboard").css("background-color", "rgba(255, 230, 148, 0.70)");
-    }, 700);
-    setTimeout(function() {
-        $("#chickenScoreboard").css("background-color", "rgba(170, 255, 170, 0.70)");
-        $(".betweenChickens").css("background-color", "#ffe694");
-    }, 800);
-    setTimeout(function() {
-        $(".betweenChickens").css("background-color", "#aaffaa");
-        $("#chickenCrystals").css("background-color", "rgba(255, 230, 148, 0.70)");
-    }, 900);
-    setTimeout(function() {
-        $("#chickenCrystals").css("background-color", "rgba(170, 255, 170, 0.70)");
-    }, 1000);
+    for (var i = 0; i < 7; i++) {
+        setTimeout(function() {
+            $("#chickenHeader").css("background-color", "rgba(255, 230, 148, 0.70)");
+        }, 500*i+100);
+        setTimeout(function() {
+            $("#chickenHeader").css("background-color", "rgba(170, 255, 170, 0.70)");
+            $("#chickenScoreboard").css("background-color", "rgba(255, 230, 148, 0.70)");
+        }, 500*i+200);
+        setTimeout(function() {
+            $("#chickenScoreboard").css("background-color", "rgba(170, 255, 170, 0.70)");
+            $(".betweenChickens").css("background-color", "#ffe694");
+        }, 500*i+300);
+        setTimeout(function() {
+            $(".betweenChickens").css("background-color", "#aaffaa");
+            $("#chickenCrystals").css("background-color", "rgba(255, 230, 148, 0.70)");
+        }, 500*i+400);
+        setTimeout(function() {
+            $("#chickenCrystals").css("background-color", "rgba(170, 255, 170, 0.70)");
+        }, 500*i+500);
+    }
     setTimeout(function() {
         $("#chickenInstructions").text("Click these chickens!");
         $(".betweenChickens").css("background-color", "#ffe694");
