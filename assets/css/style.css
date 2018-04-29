@@ -151,12 +151,23 @@ h1 {
     .regularText {
         font-size: 14pt;
     }
+    #chickenCrystals {
+        height: 30%;
+    }
 }
 
 @media only screen and (max-width: 640px) {
     h1 {
         font-size: 28pt;
         text-shadow: 1px 1px #ff0000;
+    }
+    #chickenInstructions {
+        position: relative;
+        top: -30px;
+    }
+    #chickenSpawn {
+        position: relative;
+        top: -30px;
     }
 }
 
@@ -182,8 +193,12 @@ h1 {
 
     #chickenScoreboard {
         width: 88%;
-        height: 160px;
+        height: 130px;
         overflow: hidden;
+    }
+
+    #chickenInstructions {
+        font-size: 14pt;
     }
 }
 
@@ -197,9 +212,15 @@ h1 {
     }
 
     .betweenChickens {
-        top: -80px;
+        top: -100px;
     }
     .chickenButton {
         width: 40%;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .betweenChickens {
+        top: -80px;
     }
 }
