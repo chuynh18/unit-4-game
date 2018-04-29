@@ -192,17 +192,29 @@ h1 {
     .betweenChickens {
         width: 90%;
         position: relative;
-        top: -120px;
+        top: -140px;
     }
 
     #chickenScoreboard {
         width: 88%;
-        height: 130px;
+        height: 120px;
         overflow: hidden;
     }
 
     #chickenInstructions {
         font-size: 14pt;
+    }
+}
+
+@media only screen and (max-width: 475px) {
+    .betweenChickens {
+        top: -130px;
+    }
+}
+
+@media only screen and (max-width: 435px) {
+    .betweenChickens {
+        top: -120px;
     }
 }
 
@@ -216,10 +228,16 @@ h1 {
     }
 
     .betweenChickens {
-        top: -100px;
+        top: -110px;
     }
     .chickenButton {
         width: 40%;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .betweenChickens {
+        top: -100px;
     }
 }
 
