@@ -146,9 +146,13 @@ h1 {
 
 @media only screen and (max-width: 767px) {
     #chickenHeader {
-    width: 70%;
+        width: 70%;
+        height: 40px;
     }
-
+    h1 {
+        position: relative;
+        top: -25px;
+    }
     .regularText {
         font-size: 14pt;
     }
@@ -170,6 +174,9 @@ h1 {
     #chickenSpawn {
         position: relative;
         top: -30px;
+    }
+    #chickenHeader {
+        height: 30px;
     }
 }
 
