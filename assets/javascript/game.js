@@ -206,6 +206,8 @@ $(function() {
         $("#chickenInstructions").text(cheerYouOn[Math.floor(Math.random()*cheerYouOn.length)]);
         // win
         if (chickenValue === targetNum) {
+            audioElement.setAttribute("src", "assets/sounds/win.webm");
+            audioElement.play();
             winLoss[0]++;
             newGame();
             updateDisplay();
