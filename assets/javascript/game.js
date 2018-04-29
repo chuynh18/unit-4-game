@@ -6,8 +6,14 @@ var crystalArray;
 // this holds the target value
 var targetNum;
 
+// this holds the player's current "score" from chicken clicks
+var chickenValue;
+
 // this holds number of wins and losses
-var winLoss;
+var winLoss = [0, 0];
+
+// this holds the URLs to the chicken images I'm using
+var crystalURL = ["assets/images/ckn1.jpg", "assets/images/ckn2.jpg", "assets/images/ckn3.jpg", "assets/images/ckn4.jpg"]
 
 /* this generates a random number between TWO and twelve (not starting at one, because one is lame)
  NOTE:  No need to call this function; the thing you want to do is handled by assignCrystalValues() */
@@ -15,7 +21,8 @@ var genCrystalNum = function() {
     return Math.floor(Math.random() * 11) + 2;
 };
 
-// this generates a random number between 19 and 120
+/* this generates a random number between 19 and 120
+NOTE:  No need to call this function, it's called by newGame() */
 var genTargetNum = function() {
     return Math.floor(Math.random() * 102) + 19;
 };
@@ -53,7 +60,8 @@ var testGen = {
 /* assigns crystals unique values between 2 through 11
 argument is the number of values you want returned
 IMPORTANT:  n must not exceed 11!
-for this game, we're going with 4, because we have 4 crystals */
+for this game, we're going with 4, because we have 4 crystals
+NOTE:  No need to call this function, it's called by newGame() */
 var assignCrystalValues = function(numOfCrystals) {
     crystalArray = []
     for (var i = 0; i < numOfCrystals; i++) {
@@ -66,16 +74,77 @@ var assignCrystalValues = function(numOfCrystals) {
     console.log("crystal values are: " + crystalArray);
 };
 
-// run on game start and new game
+/*
+this is run on webpage load and on new round
+resets chickenValue to 0, generates new target value and new values for each chicken
+*/
 var newGame = function() {
+    chickenValue = 0;
     targetNum = genTargetNum();
     console.log ("target value is: " + targetNum);
     assignCrystalValues(4);
-}
+};
 
-newGame();
+// this updates the page so the player actually sees what's going on
+var updateDisplay = function() {
+    $("#chickenPointsDisplay").text("Current chicken power: " + chickenValue);
+    $("#chickenTargetScore").text("Target power: " + targetNum);
+    $("#chickenWins").text("Wins: " + winLoss[0] + " ");
+    $("#chickenLosses").text(", Losses: " + winLoss[1]);
+};
 
-// this is the document ready thing
+// trying to prevent image dragging for usability reasons but I am guessing maybe the CSS onclick stuff is messing with it
+$('img').on('dragstart', function(event) { event.preventDefault(); });
+
+// this adds the <img> elements to the page with the appropriate attributes, so that the chicken buttons show up
+var spawnChickens = function() {
+    $("#chickenSpawn").empty();
+    for (var i = 0; i < crystalArray.length; i++) {
+        var chickenBtn = $("<img>");
+        chickenBtn.attr("src", crystalURL[i]);
+        chickenBtn.addClass("chickenButton");
+        chickenBtn.attr("id", "chicken" + (i+1));
+        chickenBtn.attr("alt", "Chicken picture " + (i+1));
+        chickenBtn.attr("value", crystalArray[i]);
+        $("#chickenSpawn").append(chickenBtn);
+        console.log(chickenBtn);
+    };
+};
+
+// changes the value of the chickens
+var changeChickens = function () {
+    $("#chickenSpawn img:nth-child(1)").attr("value", crystalArray[0]);
+    $("#chickenSpawn img:nth-child(2)").attr("value", crystalArray[1]);
+    $("#chickenSpawn img:nth-child(3)").attr("value", crystalArray[2]);
+    $("#chickenSpawn img:nth-child(4)").attr("value", crystalArray[3]);
+};
+
+// ------ begin game logic -------
+
+// this is the jQuery document ready thing (in shorthand form!), I think
 $(function() {
+// invoke newGame() on page load - only for the first round played per page load
+newGame();
+updateDisplay();
+spawnChickens();
+
+// this makes each chicken button increment chicken power by the appropriate amount when clicked
+$(".chickenButton").on("click", function() {
+    console.log("clicked chicken value is " + $(this).attr("value"));
+    chickenValue += parseInt($(this).attr("value"))
+    updateDisplay();
+    if (chickenValue === targetNum) {
+        winLoss[0]++;
+        newGame();
+        updateDisplay();
+        changeChickens();
+    }
+    else if (chickenValue >= targetNum) {
+        winLoss[1]++;
+        newGame();
+        updateDisplay();
+        changeChickens();
+    }
+});
 
 });
