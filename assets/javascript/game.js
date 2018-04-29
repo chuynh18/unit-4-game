@@ -15,6 +15,8 @@ var winLoss = [0, 0];
 // this holds the URLs to the chicken images I'm using
 var crystalURL = ["assets/images/ckn1.jpg", "assets/images/ckn2.jpg", "assets/images/ckn3.jpg", "assets/images/ckn4.jpg"]
 
+// this holds "motivational" messages
+var cheerYouOn = ["Aren't you just winging it?", "Keep going!  Don't chicken out!", "Don't stop pecking these buttons!", "I'm just egging you on!", "Talk is cheep, so keep on clucking!", "One more cluck!  Don't be a chicken!", "Don't be stingy!  Spare me one more poultry click!"]
 /* this generates a random number between TWO and twelve (not starting at one, because one is lame)
  NOTE:  No need to call this function; the thing you want to do is handled by assignCrystalValues() */
 var genCrystalNum = function() {
@@ -121,7 +123,7 @@ var changeChickens = function () {
 
 // yes, I could simplify this with a loop but I got tired
 var winMsg = function() {
-    $("#chickenInstructions").text("You won!");
+    $("#chickenInstructions").text("You won!  But don't get cocky!");
     $("#chickenHeader").css("background-color", "rgba(170, 255, 170, 0.70)");
     $("#chickenScoreboard").css("background-color", "rgba(170, 255, 170, 0.70)");
     $(".betweenChickens").css("background-color", "#aaffaa");
@@ -172,7 +174,7 @@ var winMsg = function() {
 };
 
 var loseMsg = function() {
-    $("#chickenInstructions").text("You lost.");
+    $("#chickenInstructions").text("Looks like you've clucked one too many times!");
     for (var i = 0; i < 4; i++) {
         setTimeout(function() {
             $("#chickenHeader").css("background-color", "rgba(255, 170, 170, 0.70)");
@@ -206,6 +208,7 @@ $(".chickenButton").on("click", function() {
     // console.log("clicked chicken value is " + $(this).attr("value"));
     chickenValue += parseInt($(this).attr("value"))
     updateDisplay();
+    $("#chickenInstructions").text(cheerYouOn[Math.floor(Math.random()*cheerYouOn.length)]);
     // win
     if (chickenValue === targetNum) {
         winLoss[0]++;
