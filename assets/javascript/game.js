@@ -134,6 +134,7 @@ var spawnChickens = function() {
 // changes the value of the chickens - used for new games
 // I gave up on doing it more elegantly, RIP
 // but I learned a little more about the functionality that jQuery provides...  WORTH!?
+// jk the above comment is no longer valid - i learned how to do eeet
 // var changeChickens = function () {
 //     $("#chickenSpawn img:nth-child(1)").attr("value", crystalArray[0]);
 //     $("#chickenSpawn img:nth-child(2)").attr("value", crystalArray[1]);
@@ -148,6 +149,8 @@ var winMsg = function() {
     $("#chickenScoreboard").css("background-color", "rgba(170, 255, 170, 0.70)");
     $(".betweenChickens").css("background-color", "#aaffaa");
     $("#chickenCrystals").css("background-color", "rgba(170, 255, 170, 0.70)");
+    $("#chickenLeft").attr("src", "assets/images/winleft.png");
+    $("#chickenRight").attr("src", "assets/images/winright.png");
     // this part is the loop that makes the blinking appear to "travel"
     for (var i = 0; i < 7; i++) {
         setTimeout(function() {
@@ -176,11 +179,15 @@ var winMsg = function() {
         $("#chickenCrystals").css("background-color", "rgba(255, 230, 148, 0.70)");
         $("#chickenHeader").css("background-color", "rgba(255, 230, 148, 0.70)");
         $("#chickenScoreboard").css("background-color", "rgba(255, 230, 148, 0.70)");
+        $("#chickenLeft").attr("src", "assets/images/pointleft.png");
+        $("#chickenRight").attr("src", "assets/images/pointright.png");
     }, 4000);
 };
 
 var loseMsg = function() {
     $("#chickenInstructions").text("Looks like you've clucked one too many times!  Better cluck next time!");
+    $("#chickenLeft").attr("src", "assets/images/loseleft.png");
+    $("#chickenRight").attr("src", "assets/images/loseright.png");
     // blink blink blink blink
     for (var i = 0; i < 4; i++) {
         // blink to green...
@@ -200,6 +207,8 @@ var loseMsg = function() {
     };
     setTimeout(function() {
         $("#chickenInstructions").text("Click these chickens!");
+        $("#chickenLeft").attr("src", "assets/images/pointleft.png");
+        $("#chickenRight").attr("src", "assets/images/pointright.png");
     }, 4000);
 };
 
