@@ -131,17 +131,6 @@ var spawnChickens = function() {
     };
 };
 
-// changes the value of the chickens - used for new games
-// I gave up on doing it more elegantly, RIP
-// but I learned a little more about the functionality that jQuery provides...  WORTH!?
-// jk the above comment is no longer valid - i learned how to do eeet
-// var changeChickens = function () {
-//     $("#chickenSpawn img:nth-child(1)").attr("value", crystalArray[0]);
-//     $("#chickenSpawn img:nth-child(2)").attr("value", crystalArray[1]);
-//     $("#chickenSpawn img:nth-child(3)").attr("value", crystalArray[2]);
-//     $("#chickenSpawn img:nth-child(4)").attr("value", crystalArray[3]);
-// };
-
 // making this was a waste of my time
 var winMsg = function() {
     $("#chickenInstructions").text("You won!  But don't get cocky!");
